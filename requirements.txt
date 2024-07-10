@@ -1,0 +1,8 @@
+django==4.2.13
+django-ninja==1.1.0
+mysqlclient==2.2.4
+pydantic==2.7.3
+loguru==0.7.2
+django-ninja-jwt==5.3.1
+django-cors-headers==4.4.0
+orjson==3.10.5
