@@ -5,6 +5,7 @@
       <!-- status-icon 输入时会多一个状态图标 -->
       <!-- :rules 校验输入的账密规则，绑定的是 script 中的rules对象 -->
       <!-- ref="userFormRef"用在了 <el-form> 组件上,意味着可以通过 this.$refs.userFormRef 在 Vue 实例的方法中访问到这个 <el-form> 组件的实例 -->
+      <!-- userFormRef 在这里绑定和在script中声明，效果是一样的 -->
       <el-form :model="user" status-icon :rules="rules" ref="userFormRef">
         <div class="title">火星</div>
         <!-- prop="userName" 需要加上这个，上面的校验规则 rules 才会生效 -->
