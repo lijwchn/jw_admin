@@ -24,7 +24,6 @@ def generate_random_nine_digit_numbers(count):
     """
     numbers = []
     for _ in range(count):
-        # 生成一个范围在100000000到999999999之间的随机整数，确保9位数
         number = random.randint(10000000000, 99999999999)
         numbers.append(str(number))
     return numbers
