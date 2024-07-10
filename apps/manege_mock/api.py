@@ -17,10 +17,8 @@ def get_notice_count(request):
 def generate_random_nine_digit_numbers(count):
     """
     生成指定数量的9位随机数字字符串。
-
     参数:
     count (int): 需要生成的9位数字字符串的数量。
-
     返回:
     list: 包含生成的9位数字字符串的列表。
     """

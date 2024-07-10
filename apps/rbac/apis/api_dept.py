@@ -20,6 +20,12 @@ def get_dept_by_id(request, dept_id: int):
 @router.get("/dept", response=List[DeptOut])
 @paginate(MyPagination)
 def list_dept(request, filters: DeptFilterSchema = Query(...)):
+    """
+    获取部门列表。
+    参数:
+    - request: 请求对象，包含请求的相关信息。
+    - filters: 部门过滤条件，用于筛选部门列表。
+    """
     query_set = retrieve(request, Dept, filters)
     return query_set
 
@@ -41,11 +47,17 @@ def create_dept(request, payload: DeptIn):
 
 @router.put("/dept/{dept_id}")
 def update_dept(request, dept_id: int, payload: DeptIn):
+    """
+    更新部门
+    """
     data = update_by_id(request, payload, Dept, dept_id)
     return data.id
 
 
 @router.delete("/dept/{dept_id}")
 def delete_dept(request, dept_id: int):
+    """
+    删除部门
+    """
     data = delete_by_id(Dept, dept_id)
     return data.id
