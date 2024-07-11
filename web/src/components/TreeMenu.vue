@@ -27,10 +27,6 @@
           {{ child.title }}
         </el-menu-item>
       </el-sub-menu>
-      <!-- <el-menu-item v-else :index="menu.path" :key="menu.id">
-        <el-icon v-if="menu.icon" v-html="menu.icon"></el-icon>
-        {{ menu.title }}
-      </el-menu-item> -->
     </template>
   </el-menu>
 </template>
