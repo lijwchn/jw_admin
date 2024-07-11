@@ -100,7 +100,8 @@ export default {
   components: { TreeMenu, BreadCrumb },
   data() {
     return {
-      userInfo: this.$storage.getItem('userInfo') || {},
+      // userInfo: this.$storage.getItem('userInfo') || {},
+      userInfo: this.$store.state.userInfo || {},
       isCollapes: false,
       showDot: false,
       userMenuList: [],
