@@ -70,6 +70,22 @@ const routes = [
         },
         component: () => import('@/views/GenBarCode.vue'),
       },
+      {
+        name: 'demo1',
+        path: '/learn/demo1',
+        meta: {
+          title: '学习菜单1',
+        },
+        component: () => import('@/demo/demo1.vue'),
+      },
+      {
+        name: 'demo2',
+        path: '/learn/demo2',
+        meta: {
+          title: '学习菜单2',
+        },
+        component: () => import('@/demo/demo2.vue'),
+      },
     ],
   },
   {
