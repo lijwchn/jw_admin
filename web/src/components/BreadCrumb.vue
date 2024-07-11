@@ -1,3 +1,4 @@
+<!-- 面包屑组件 -->
 <template>
   <el-breadcrumb separator="/">
     <el-breadcrumb-item v-for="item in breadList" :key="item.path">
