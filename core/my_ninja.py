@@ -5,6 +5,7 @@ from ninja import NinjaAPI
 from ninja.renderers import JSONRenderer
 
 from core.standard_response import format_datetime_in_dict
+from utils.log_config import logger
 
 
 class MyJSONRenderer(JSONRenderer):
@@ -52,4 +53,5 @@ class MyNinjaAPI(NinjaAPI):
                 content_type=self.get_content_type(),
             )
 
+        logger.info(f"由 my_ninja 创建的响应")
         return response
