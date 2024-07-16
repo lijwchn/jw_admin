@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8
+    container_name: mysql
+    environment:
+      MYSQL_DATABASE: ninja_demo
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 123456
+      MYSQL_ROOT_PASSWORD: 123456
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+#  backend:
+#    build:
+#      context: .
+#      dockerfile: ninja_demo/Dockerfile
+#    container_name: backend
+#    command: gunicorn --chdir ninja_demo ninja_demo.wsgi:application --bind 0.0.0.0:8000
+#    environment:
+#      DJANGO_SETTINGS_MODULE: ninja_demo.settings.prod
+#    volumes:
+#      - .:/app
+#    ports:
+#      - "8000:8000"
+#    depends_on:
+#      - db
+#
+#  frontend:
+#    build:
+#      context: ./web
+#      dockerfile: Dockerfile
+#    container_name: frontend
+#    ports:
+#      - "3000:80"

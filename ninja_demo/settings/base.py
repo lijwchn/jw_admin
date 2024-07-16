@@ -8,7 +8,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # 确保日志目录存在
 LOGS_DIR = os.path.join(BASE_DIR, "../../logs")
 if not os.path.exists(LOGS_DIR):
-    os.makedirs(LOGS_DIR)
+    os.makedirs(LOGS_DIR, exist_ok=True)
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "django-insecure-r1s%t!ef$gqhj0zow#xnw)eqvmaqhvbr2!bdbwtcq3jjg5z(=a"
