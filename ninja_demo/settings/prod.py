@@ -1,7 +1,7 @@
 # 生产环境配置
 from .base import *
 
-DEBUG = False
+DEBUG = True
 ALLOWED_HOSTS = []
 
 # 允许所有来源都能访问，为了解决 cors 跨域问题
