@@ -12,20 +12,15 @@ services:
     volumes:
       - db_data:/var/lib/mysql
 
-#  backend:
-#    build:
-#      context: .
-#      dockerfile: ninja_demo/Dockerfile
-#    container_name: backend
-#    command: gunicorn --chdir ninja_demo ninja_demo.wsgi:application --bind 0.0.0.0:8000
-#    environment:
-#      DJANGO_SETTINGS_MODULE: ninja_demo.settings.prod
-#    volumes:
-#      - .:/app
-#    ports:
-#      - "8000:8000"
-#    depends_on:
-#      - db
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: backend
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
 #
 #  frontend:
 #    build:

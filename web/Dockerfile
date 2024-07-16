@@ -5,8 +5,7 @@ FROM node:17 AS builder
 WORKDIR /app
 
 # 克隆最新代码
-RUN apt-get update && apt-get install -y git
-RUN git clone https://github.com/your_username/ninja_demo.git .
+#RUN git clone https://github.com/lijwchn/jw_admin.git .
 
 # 复制 package.json 和 yarn.lock 文件并安装依赖
 COPY package.json yarn.lock ./

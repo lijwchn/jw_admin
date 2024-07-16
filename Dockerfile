@@ -8,8 +8,7 @@ WORKDIR /app
 RUN apk add --no-cache pkgconfig mariadb-dev mysql-dev build-base
 
 # 克隆最新代码
-RUN apt-get update && apt-get install -y git
-RUN git clone https://github.com/lijwchn/jw_admin.git .
+#RUN git clone https://github.com/lijwchn/jw_admin.git .
 COPY . /app
 
 
