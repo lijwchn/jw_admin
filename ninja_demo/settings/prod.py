@@ -2,7 +2,11 @@
 from .base import *
 
 DEBUG = True
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "localhost",  # 如果你的开发环境也是通过localhost访问
+    "127.0.0.1",  # 如果你的开发环境也是通过127.0.0.1访问
+    "106.52.59.119",  # 添加你的服务器IP地址
+]
 
 # 允许所有来源都能访问，为了解决 cors 跨域问题
 CORS_ORIGIN_ALLOW_ALL = True
