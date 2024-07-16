@@ -6,3 +6,4 @@ loguru==0.7.2
 django-ninja-jwt==5.3.1
 django-cors-headers==4.4.0
 orjson==3.10.5
+gunicorn==22.0.0
