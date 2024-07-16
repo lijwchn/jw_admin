@@ -6,8 +6,6 @@ services:
     container_name: mysql
     environment:
       MYSQL_DATABASE: ninja_demo
-      MYSQL_USER: root
-      MYSQL_PASSWORD: 123456
       MYSQL_ROOT_PASSWORD: 123456
     ports:
       - "3306:3306"
