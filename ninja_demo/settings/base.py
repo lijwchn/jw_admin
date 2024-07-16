@@ -145,8 +145,6 @@ NINJA_JWT = {
     "TOKEN_VERIFY_INPUT_SCHEMA": "ninja_jwt.schema.TokenVerifyInputSchema",
 }
 
-# 允许所有来源都能访问，为了解决 cors 跨域问题
-CORS_ORIGIN_ALLOW_ALL = True
 
 # 使用自定义的用户模型，而不是 django 的默认用户模型
 AUTH_USER_MODEL = "rbac.Users"

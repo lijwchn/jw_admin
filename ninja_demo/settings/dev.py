@@ -1,7 +1,11 @@
 # 开发环境配置
+from .base import *
 
 DEBUG = True
 ALLOWED_HOSTS = []
+
+# 允许所有来源都能访问，为了解决 cors 跨域问题
+CORS_ORIGIN_ALLOW_ALL = True
 
 DATABASES = {
     "default": {
