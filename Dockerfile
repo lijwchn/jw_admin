@@ -13,7 +13,7 @@ COPY . /app
 
 
 # 安装依赖
-RUN pip install --no-cache-dir -i https://mirror.baidu.com/pypi/simple -r requirements.txt
+RUN pip install --no-cache-dir -i https://mirrors.aliyun.com/pypi/simple/ -r requirements.txt
 
 # 设置 Django 环境变量
 ENV DJANGO_SETTINGS_MODULE=ninja_demo.settings.prod
