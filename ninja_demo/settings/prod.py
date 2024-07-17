@@ -17,7 +17,7 @@ DATABASES = {
         "NAME": "ninja_demo",  # 你的数据库名
         "USER": "root",  # 你的数据库用户名
         "PASSWORD": "123456",  # 你的数据库密码
-        "HOST": "localhost",  # 数据库服务器地址，如果是本地则为localhost
+        "HOST": "0.0.0.0",  # 数据库服务器地址，如果是本地则为localhost
         "PORT": "3306",  # MySQL默认端口
         "POOL_OPTIONS": {
             "POOL_SIZE": 10,
