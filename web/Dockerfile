@@ -1,5 +1,5 @@
 # 第一阶段：使用 Node.js 镜像进行构建
-FROM node:17 AS builder
+FROM node:18.20.4-alpine3.20 AS builder
 
 # 设置工作目录
 WORKDIR /app
