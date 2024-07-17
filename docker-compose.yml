@@ -34,3 +34,8 @@ services:
 
 volumes:
   db_data:
+
+# 设置默认网络
+networks:
+  default:
+    name: ninja_network

@@ -6,13 +6,14 @@ WORKDIR /app
 
 # 添加必要的软件包
 RUN apk add --no-cache pkgconfig mariadb-dev mysql-dev build-base
+RUN apk del .build-deps
 
-# 克隆最新代码
-COPY . /app
-
-# 安装依赖
+# 先复制依赖文件，以便利用缓存
+COPY requirements.txt /app/
 RUN pip install --no-cache-dir -i https://mirrors.aliyun.com/pypi/simple/ -r requirements.txt
 
+# 再复制项目文件
+COPY . /app
 # 设置 Django 的配置文件使用生产环境
 ENV DJANGO_SETTINGS_MODULE=ninja_demo.settings.prod
 
