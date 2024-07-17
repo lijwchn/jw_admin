@@ -77,7 +77,7 @@ function request(options) {
     config.mock = options.mock
   }
 
-  if (config.env === 'prod') {
+  if (config.env === 'production') {
     service.defaults.baseURL = config.baseApi
   } else {
     service.defaults.baseURL = config.mock ? config.mockApi : config.baseApi
