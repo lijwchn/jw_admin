@@ -13,7 +13,7 @@ const EnvConfig = {
     mockApi: 'http://127.0.0.1:8001/api',
   },
   production: {
-    baseApi: '/api/',
+    baseApi: 'http://localhost/api/',
     mockApi: 'http://127.0.0.1:8002/mock', // 实际上没有mock这个地址
   },
 }
