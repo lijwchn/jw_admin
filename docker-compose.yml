@@ -21,14 +21,16 @@ services:
       - "8000:8000"
     depends_on:
       - db
-#
-#  frontend:
-#    build:
-#      context: ./web
-#      dockerfile: Dockerfile
-#    container_name: frontend
-#    ports:
-#      - "3000:80"
+
+  frontend:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    container_name: frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
 
 volumes:
   db_data:

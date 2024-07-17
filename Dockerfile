@@ -13,9 +13,7 @@ COPY . /app
 # 安装依赖
 RUN pip install --no-cache-dir -i https://mirrors.aliyun.com/pypi/simple/ -r requirements.txt
 
-# 迁移数据库文件
-#RUN python manage.py migrate
-# 设置 Django 环境变量
+# 设置 Django 的配置文件使用生产环境
 ENV DJANGO_SETTINGS_MODULE=ninja_demo.settings.prod
 
 # 暴露端口
