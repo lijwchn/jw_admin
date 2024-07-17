@@ -10,7 +10,6 @@ RUN apk add --no-cache pkgconfig mariadb-dev mysql-dev build-base
 # 克隆最新代码
 COPY . /app
 
-
 # 安装依赖
 RUN pip install --no-cache-dir -i https://mirrors.aliyun.com/pypi/simple/ -r requirements.txt
 
@@ -21,7 +20,8 @@ ENV DJANGO_SETTINGS_MODULE=ninja_demo.settings.prod
 
 # 暴露端口
 EXPOSE 8000
-
+# 设置权限
+RUN chmod +x /app/entrypoint.sh
 # 设置 entrypoint
 ENTRYPOINT ["/app/entrypoint.sh"]
 
