@@ -12,4 +12,4 @@ class SuperAdminAuth(HttpBearer):
         if user and user.is_superuser:  # 检查用户是否已认证且为超级管理员
             logger.info(f"{user.username} 访问了管理员接口")
             return user
-        raise CommonException(message="非管理员不能操作", status_code=403)
+        raise CommonException(message="非管理员不能操作", status_code=200, code=403)
