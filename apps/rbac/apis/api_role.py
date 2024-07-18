@@ -64,7 +64,7 @@ def update_role(request, payload: RoleUpdateIn):
     return data.id
 
 
-@router.post("/role/{role_id}/menu")
+@router.post("/role/{role_id}/menu", auth=SuperAdminAuth())
 def update_role_menu(request, role_id: int, payload: RoleMenuIn):
     """
     给角色分配权限，新增 & 修改 & 删除权限都是共用这个接口

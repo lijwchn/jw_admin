@@ -100,7 +100,7 @@ def update_user_details(user, data, updater_username):
     user.update_time = datetime.now()
 
 
-@router.put("/user", response=UserOut)
+@router.put("/user", response=UserOut, auth=SuperAdminAuth())
 def update_user(request, payload: UpdateUserIn):
     """
     更新用户
