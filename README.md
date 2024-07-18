@@ -24,3 +24,13 @@ node 版本 18
 2. 前端：切换到 web/src/config/index.js ，修改生产环境的后端地址
 3. 前端：切换到 web 目录下，按照你的实际情况，修改 nginx.conf 文件
 4. 开始部署，docker-compose up --build
+
+## 说明
+
+这个项目原来是放在gitee的，现在整合在一起之后可以一次性使用 docker 部署
+
+原先项目地址:
+
+前端：https://gitee.com/lijwchn/vue3_manage_learn
+
+后端：https://gitee.com/lijwchn/ninja_demo
