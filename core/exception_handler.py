@@ -6,6 +6,7 @@ from django.http import Http404
 from ninja.errors import ValidationError
 
 from core.standard_response import standard_response
+from core.common_exception import CommonException
 from ninja_demo.urls import api
 from utils.log_config import logger
 
@@ -17,6 +18,15 @@ def all_exception_handler(request, exc: Exception):
     logger.error("Error--> 被全局异常捕获")
     logger.error(traceback.format_exc())
     return standard_response(code=500, message=err_msg, success=False, status=500)
+
+
+@api.exception_handler(CommonException)
+def common_exception_handler(request, exc: CommonException):
+    logger.error("Error--> 被通用异常捕获")
+    logger.error(traceback.format_exc())
+    return standard_response(
+        code=exc.code, message=exc.message, success=exc.success, status=exc.status_code
+    )
 
 
 # 访问不存在的资源
