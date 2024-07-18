@@ -5,11 +5,11 @@ FROM python:3.11-alpine
 WORKDIR /app
 
 # 添加必要的软件包
-RUN apk add --no-cache pkgconfig mariadb-dev mysql-dev build-base
+RUN apk add --no-cache pkgconfig mysql-dev build-base
 
 # 先复制依赖文件，以便利用缓存
 COPY requirements.txt /app/
-RUN pip install --no-cache-dir -i https://mirrors.aliyun.com/pypi/simple/ -r requirements.txt
+RUN pip install --no-cache-dir -i https://mirrors.cloud.tencent.com/pypi/simple -r requirements.txt
 
 # 再复制项目文件
 COPY . /app
