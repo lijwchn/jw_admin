@@ -4,7 +4,8 @@ FROM python:3.11-alpine
 # 设置工作目录
 WORKDIR /app
 
-# 添加必要的软件包
+# 添加必要的软件包(更换成阿里云镜像源)
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
 RUN apk add --no-cache pkgconfig mysql-dev build-base
 
 # 先复制依赖文件，以便利用缓存
