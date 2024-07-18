@@ -37,8 +37,8 @@ export default {
   data() {
     return {
       user: {
-        username: 'lijw',
-        password: 'lijw',
+        username: '演示账号',
+        password: '123456',
       },
       rules: {
         username: [
