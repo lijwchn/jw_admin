@@ -14,7 +14,7 @@ DATABASES = {
         "USER": "root",  # 你的数据库用户名
         "PASSWORD": "123456",  # 你的数据库密码
         "HOST": "127.0.0.1",  # 数据库服务器地址，如果是本地则为localhost
-        "PORT": "3307",  # MySQL默认端口
+        "PORT": "3306",  # MySQL默认端口
         "POOL_OPTIONS": {
             "POOL_SIZE": 10,
             "MAX_OVERFLOW": 10,
