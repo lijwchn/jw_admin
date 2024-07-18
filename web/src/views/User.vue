@@ -16,16 +16,16 @@
         </el-form-item>
         <el-form-item label="部门" prop="dept_id">
           <el-select
-              v-model="userForm.dept_id"
-              clearable
-              placeholder="选择部门"
-              style="width: 150px"
+            v-model="userForm.dept_id"
+            clearable
+            placeholder="选择部门"
+            style="width: 150px"
           >
             <el-option
-                v-for="item in deptList"
-                :key="item.id"
-                :label="item.name"
-                :value="item.id"
+              v-for="item in deptList"
+              :key="item.id"
+              :label="item.name"
+              :value="item.id"
             ></el-option>
           </el-select>
         </el-form-item>
@@ -126,6 +126,7 @@
           <el-input
             v-model="userCreateForm.username"
             placeholder="请输入用户名"
+            :disabled="isEditMode"
           />
         </el-form-item>
         <el-form-item label="姓名" prop="name">
@@ -148,7 +149,7 @@
             <el-radio-button label="女" :value="0" />
           </el-radio-group>
         </el-form-item>
-        <el-form-item label="部门">
+        <el-form-item label="部门" prop="dept_id">
           <el-select v-model="userCreateForm.dept_id" placeholder="选择部门">
             <el-option
               v-for="item in deptList"
@@ -158,7 +159,7 @@
             ></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="角色">
+        <el-form-item label="角色" prop="role_ids">
           <el-select
             v-model="userCreateForm.role_ids"
             placeholder="选择角色"
@@ -265,6 +266,7 @@ const userFormRef = ref(null)
 // 查询按钮
 const handleQuery = () => {
   getUserList()
+  proxy.$message.success('查询成功')
 }
 // 重置按钮
 const handleResetForm = (formRef) => {
@@ -326,7 +328,7 @@ const userCreateForm = reactive({})
 // 控制是否显示新增用户的form
 const showUserForm = ref(false)
 // 新增用户时，表单的字段
-const userCreateFormRef = ref()
+// const userCreateFormRef = ref()
 // 新增用户
 const handleCreate = () => {
   // 设置为非编辑模式
@@ -357,30 +359,40 @@ const getRoleList = async () => {
 const isEditMode = ref(false)
 // 提交创建、编辑 用户的表单
 const handleConfirm = () => {
-  if (isEditMode.value === false) {
-    proxy.$refs.userCreateFormRef.validate(async (valid) => {
-      if (valid) {
-        // let params = toRaw(userCreateForm)
-        // params.email += '@qq.com'
+  proxy.$refs.userCreateFormRef.validate(async (valid) => {
+    if (valid) {
+      let res
+      try {
+        // 创建模式
+        if (isEditMode.value === false) {
+          res = await proxy.$api.createUser(userCreateForm)
+          if (res && res.success) {
+            proxy.$message.success('用户创建成功')
+          }
+        } else if (isEditMode.value === true) {
+          // 编辑模式
+          res = await proxy.$api.updateUserInfo(userCreateForm)
+          if (res && res.success) {
+            proxy.$message.success('用户编辑成功')
+          }
+        }
+      } catch (error) {
+      } finally {
         // debugger
-        let res = await proxy.$api.createUser(userCreateForm)
-        if (res) {
+        if (res && res.success) {
           handleClose()
-          proxy.$message.success('用户创建成功')
-          getUserList()
+          setTimeout(getUserList, 500)
         }
       }
-    })
-  } else if (isEditMode.value === true) {
-    proxy.$api.updateUserInfo(userCreateForm)
-    handleClose()
-    setTimeout(getUserList, 500)
-  }
+    }
+  })
 }
 // 创建/编辑用户的表单关闭时
 const handleClose = () => {
+  console.log('前', userCreateForm)
   proxy.$refs.userCreateFormRef.resetFields()
   showUserForm.value = false
+  console.log('后', userCreateForm)
 }
 // 编辑用户
 const editUser = async (row) => {
