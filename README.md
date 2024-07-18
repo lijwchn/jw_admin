@@ -2,7 +2,7 @@
 
 ## 开发环境运行调试
 
-后端 django + django ninja + mysql
+### 1. 后端 django + django ninja + mysql
 
 python 版本 3.11
 1. 修改配置文件，在 ninja_demo.settings 文件夹下的 dev.py 中修改配置
@@ -11,7 +11,7 @@ python 版本 3.11
 4. 创建管理员用户，执行 python manage.py createsuperuser，创建成功后，在 system_users 表中能找到
 5. 在 ninja_demo/init.sql 中，执行 sql 脚本，创建菜单、角色和权限
 
-前端 vue3+vite+element-plus
+### 2. 前端 vue3+vite+element-plus
 
 node 版本 18
 
