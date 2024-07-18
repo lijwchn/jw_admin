@@ -14,11 +14,27 @@
         <el-form-item label="电话" prop="mobile">
           <el-input v-model="userForm.mobile" placeholder="请输入电话" />
         </el-form-item>
+        <el-form-item label="部门" prop="dept_id">
+          <el-select
+              v-model="userForm.dept_id"
+              clearable
+              placeholder="选择部门"
+              style="width: 150px"
+          >
+            <el-option
+                v-for="item in deptList"
+                :key="item.id"
+                :label="item.name"
+                :value="item.id"
+            ></el-option>
+          </el-select>
+        </el-form-item>
         <el-form-item label="状态" prop="status">
           <el-select
             v-model="userForm.status"
             style="width: 100px"
             placeholder="选择状态"
+            clearable
           >
             <el-option :value="true" label="启用"></el-option>
             <el-option :value="false" label="停用"></el-option>
@@ -53,6 +69,13 @@
             :label="item.label"
             :formatter="item.formatter"
           />
+          <el-table-column label="用户状态">
+            <template #default="rowContent">
+              <el-tag :type="getTagType(rowContent.row.status)">
+                {{ rowContent.row.status ? '启用' : '停用' }}
+              </el-tag>
+            </template>
+          </el-table-column>
           <el-table-column label="操作" min-width="100">
             <!-- #default="rowContent" 表示当前行的数据 -->
             <template #default="rowContent">
@@ -187,16 +210,16 @@ const columns = reactive([
   { label: '电话', prop: 'mobile' },
   { label: '邮箱', prop: 'email' },
   { label: '部门', prop: 'dept.name' },
-  {
-    label: '状态',
-    prop: 'status',
-    formatter(row, column, value) {
-      return {
-        false: '停用',
-        true: '启用',
-      }[value]
-    },
-  },
+  // {
+  //   label: '状态',
+  //   prop: 'status',
+  //   formatter(row, column, value) {
+  //     return {
+  //       false: '停用',
+  //       true: '启用',
+  //     }[value]
+  //   },
+  // },
 ])
 // 用户列表
 const userList = ref([])
@@ -227,6 +250,7 @@ const rules = reactive({
 
 onMounted(() => {
   getUserList()
+  getDeptList()
 })
 
 const getUserList = async () => {
@@ -245,6 +269,11 @@ const handleQuery = () => {
 // 重置按钮
 const handleResetForm = (formRef) => {
   formRef.resetFields()
+}
+
+// 获取用户状态的图标类型
+const getTagType = (status) => {
+  return status ? 'success' : 'danger'
 }
 
 // 分页事件，点击第几页时的处理函数
