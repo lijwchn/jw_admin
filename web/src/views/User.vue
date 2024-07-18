@@ -368,10 +368,10 @@ const editUser = async (row) => {
     userCreateForm.id = res.data.id
     userCreateForm.username = res.data.username
     userCreateForm.name = res.data.name
-    userCreateForm.email = res.data.email ?? ''
-    userCreateForm.mobile = res.data.mobile ?? ''
-    userCreateForm.gender = res.data.gender
-    userCreateForm.dept_id = res.data.dept?.id ?? ''
+    userCreateForm.email = res.data.email ?? null
+    userCreateForm.mobile = res.data.mobile ?? null
+    userCreateForm.gender = res.data.gender ?? null
+    userCreateForm.dept_id = res.data.dept?.id ?? null
     userCreateForm.role_ids = res.data.role?.map((item) => item.id) ?? []
   }
 }
