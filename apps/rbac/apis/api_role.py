@@ -8,6 +8,7 @@ from apps.rbac.models import Role
 from apps.rbac.schemas import RoleOut, RoleFilterSchema, RoleIn, RoleMenuIn, RoleUpdateIn
 from core.my_pagination import MyPagination
 from utils.base_curd import get_by_id, retrieve, create, delete_by_id, update_by_id
+from utils.system_auth import SuperAdminAuth
 from utils.usual import get_user_info_from_token
 
 router = Router()
@@ -43,7 +44,7 @@ def create_role(request, payload: RoleIn):
     return data.id
 
 
-@router.delete("/role/{role_id}")
+@router.delete("/role/{role_id}", auth=SuperAdminAuth())
 def delete_role(request, role_id: int):
     """
     根据id删除角色

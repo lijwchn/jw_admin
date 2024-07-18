@@ -5,6 +5,7 @@ from apps.rbac.models import Menu, MenuButton
 from apps.rbac.schemas import MenuOut, MenuIn, MenuFilterSchema, MenuUpdateIn
 from core.standard_response import standard_response
 from utils.base_curd import create, get_by_id, delete_by_id, update_by_id
+from utils.system_auth import SuperAdminAuth
 from utils.usual import build_menu_tree
 
 router = Router()
@@ -128,7 +129,7 @@ def update_menu(request, payload: MenuUpdateIn):
     return data.id
 
 
-@router.delete("/menu/{menu_id}")
+@router.delete("/menu/{menu_id}", auth=SuperAdminAuth())
 def delete_menu(request, menu_id: int):
     """
     删除菜单后，会将 system_menu_button/system_role_menu 中关联的数据一并删除

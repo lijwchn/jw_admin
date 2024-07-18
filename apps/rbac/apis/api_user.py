@@ -22,6 +22,8 @@ from core.standard_response import standard_response
 from utils.base_curd import get_by_id, retrieve, batch_delete_by_id
 from utils.log_config import logger
 from utils.usual import get_user_info_from_token, build_menu_tree
+from utils.system_auth import SuperAdminAuth
+
 
 router = Router()
 
@@ -41,7 +43,7 @@ def list_users(request, filters: UserFilterSchema = Query(...)):
     """
     用户列表分页查询
     """
-    query_types = {"status": "exact"}
+    query_types = {"status": "exact", "dept_id": "exact"}
     query_set = retrieve(request, Users, filters, query_types)
     return query_set
 
@@ -79,7 +81,7 @@ def create_user(request, payload: CreateUserIn):
     return new_user.id
 
 
-@router.post("/batch_delete_user")
+@router.post("/batch_delete_user", auth=SuperAdminAuth())
 def batch_delete_user(request, payload: UserDeleteIn):
     """
     批量删除用户

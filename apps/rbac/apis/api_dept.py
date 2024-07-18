@@ -7,6 +7,7 @@ from apps.rbac.models import Dept
 from apps.rbac.schemas import DeptIn, DeptOut, DeptFilterSchema
 from core.my_pagination import MyPagination
 from utils.base_curd import get_by_id, retrieve, create, delete_by_id, update_by_id
+from utils.system_auth import SuperAdminAuth
 
 router = Router()
 
@@ -60,7 +61,7 @@ def update_dept(request, dept_id: int, payload: DeptIn):
     return data.id
 
 
-@router.delete("/dept/{dept_id}")
+@router.delete("/dept/{dept_id}", auth=SuperAdminAuth())
 def delete_dept(request, dept_id: int):
     """
     删除部门
