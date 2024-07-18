@@ -48,6 +48,9 @@ def list_users(request, filters: UserFilterSchema = Query(...)):
 
 @router.post("/user")
 def create_user(request, payload: CreateUserIn):
+    """
+    创建用户
+    """
     data_dic = payload.dict()
     try:
         operate_user_info = get_user_info_from_token(request)
@@ -78,6 +81,9 @@ def create_user(request, payload: CreateUserIn):
 
 @router.post("/batch_delete_user")
 def batch_delete_user(request, payload: UserDeleteIn):
+    """
+    批量删除用户
+    """
     batch_delete_by_id(Users, payload.ids)
     return
 
