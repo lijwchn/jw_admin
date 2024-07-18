@@ -55,6 +55,9 @@ def delete_role(request, role_id: int):
 
 @router.put("/role")
 def update_role(request, payload: RoleUpdateIn):
+    """
+    更新角色
+    """
     role_id = payload.id
     data = update_by_id(request, data=payload, model=Role, model_id=role_id)
     return data.id
@@ -63,7 +66,7 @@ def update_role(request, payload: RoleUpdateIn):
 @router.post("/role/{role_id}/menu")
 def update_role_menu(request, role_id: int, payload: RoleMenuIn):
     """
-    给角色分配权限，新增 & 修改 & 删除共用这个接口
+    给角色分配权限，新增 & 修改 & 删除权限都是共用这个接口
     """
     operate_user_info = get_user_info_from_token(request)
     role = get_by_id(Role, role_id)

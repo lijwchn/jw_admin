@@ -11,6 +11,10 @@ from .schemas import EmployeeIn, EmployeeOut, EmployeeFilterSchema
 
 router = Router()
 
+"""
+最通用的增删改查接口
+"""
+
 
 @router.get(
     "/employees/{employee_id}", response=EmployeeOut, description="根据id获取员工信息"

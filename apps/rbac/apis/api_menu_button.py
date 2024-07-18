@@ -1,3 +1,7 @@
+"""
+权限管理没有应用到菜单按钮这一级，这个文件的代码没有用到
+"""
+
 from ninja import Router
 
 from apps.rbac.models import MenuButton

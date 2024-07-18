@@ -13,6 +13,12 @@ router = Router()
 
 @router.get("/dept/{dept_id}", response=DeptOut)
 def get_dept_by_id(request, dept_id: int):
+    """
+    获取部门详情。
+    参数:
+    - request: 请求对象，包含请求的相关信息。
+    - dept_id: 部门ID，用于获取指定部门详情。
+    """
     data = get_by_id(Dept, dept_id)
     return data
 
