@@ -71,6 +71,14 @@ const routes = [
         component: () => import('@/views/GenBarCode.vue'),
       },
       {
+        name: 'pic_ocr',
+        path: '/tools/pic_ocr',
+        meta: {
+          title: 'ocr图片识别',
+        },
+        component: () => import('@/views/OcrTool.vue'),
+      },
+      {
         name: 'demo1',
         path: '/learn/demo1',
         meta: {
