@@ -143,6 +143,9 @@
 <script setup>
 import { onMounted, ref, reactive, getCurrentInstance } from 'vue'
 
+const instance = getCurrentInstance()
+const { proxy } = instance
+
 onMounted(() => {
   getRoleList()
 })
@@ -154,9 +157,6 @@ const getMenuList = async () => {
   const res = await proxy.$api.getAllMenuList(params)
   menuList.value = res.data
 }
-
-const instance = getCurrentInstance()
-const { proxy } = instance
 
 // 控制是否显示新增角色的对话框
 const showRoleForm = ref(false)
@@ -291,7 +291,8 @@ const handleSubmit = () => {
           }
         }
       } catch (error) {
-        console.log(error)
+        // console.log(error)
+        proxy.$message.error('识别出错，可能是内容过多无法识别')
       } finally {
         if (res && res.success) {
           showRolePermission.value = false
