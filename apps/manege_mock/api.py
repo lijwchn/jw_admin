@@ -3,9 +3,7 @@ mock数据的接口，用于测试
 """
 
 import random
-
 from ninja.router import Router
-
 from core.standard_response import standard_response
 
 router = Router()
