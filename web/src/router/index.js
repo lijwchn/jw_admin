@@ -12,7 +12,6 @@ const routes = [
     children: [
       {
         name: 'welcome',
-        // 注意，这里的path不要带 /,因为上面的父路由已经有/
         path: 'welcome',
         meta: {
           title: '欢迎页',
