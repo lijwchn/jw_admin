@@ -155,12 +155,20 @@ const menuList = ref([])
 const getMenuList = async () => {
   menuQueryForm.include_buttons = false
   let params = { ...menuQueryForm }
-  const res = await proxy.$api.getAllMenuList(params)
-  menuList.value = res.data
+  try {
+    const res = await proxy.$api.getAllMenuList(params)
+    menuList.value = res.data
+    return true
+  } catch (error) {
+    return false
+  }
 }
 // 查询按钮
-const handleQuery = () => {
-  getMenuList()
+const handleQuery = async () => {
+  let res = await getMenuList()
+  if (res) {
+    proxy.$message.success('查询成功')
+  }
 }
 // 重置按钮
 const handleResetForm = (formRef) => {

@@ -220,16 +220,24 @@ const columns = reactive([
 ])
 
 // 点击查询按钮时
-const handleQuery = () => {
-  getRoleList()
+const handleQuery = async () => {
+  let res = await getRoleList()
+  if (res) {
+    proxy.$message.success('查询成功')
+  }
 }
 // 获取角色列表
 const getRoleList = async () => {
   let params = { ...roleQueryForm, ...pager }
-  let res = await proxy.$api.getRoleList(params)
-  const { items, count } = res.data
-  roleList.value = items
-  total.value = count
+  try {
+    let res = await proxy.$api.getRoleList(params)
+    const { items, count } = res.data
+    roleList.value = items
+    total.value = count
+    return true
+  } catch (error) {
+    return false
+  }
 }
 // 分页事件，点击第几页时的处理函数
 const handleCurrentChange = (current_page) => {

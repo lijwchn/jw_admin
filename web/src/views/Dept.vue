@@ -139,10 +139,15 @@ const deptList = ref([])
 // 获取部门列表
 const getDeptList = async () => {
   let params = { ...deptQueryForm, ...pager }
-  let res = await proxy.$api.getDeptList(params)
-  const { items, count } = res.data
-  deptList.value = items
-  total.value = count
+  try {
+    let res = await proxy.$api.getDeptList(params)
+    const { items, count } = res.data
+    deptList.value = items
+    total.value = count
+    return true
+  } catch (error) {
+    return false
+  }
 }
 
 // 关闭创建菜单的表单（点击取消按钮时）
@@ -167,8 +172,11 @@ const columns = reactive([
 ])
 
 // 点击查询按钮时
-const handleQuery = () => {
-  getDeptList()
+const handleQuery = async () => {
+  let res = await getDeptList()
+  if (res) {
+    proxy.$message.success('查询成功')
+  }
 }
 
 // 分页事件，点击第几页时的处理函数

@@ -256,17 +256,24 @@ onMounted(() => {
 
 const getUserList = async () => {
   let params = { ...userForm, ...pager }
-  let res = await proxy.$api.getUserList(params)
-  const { items, count } = res.data
-  total.value = count
-  userList.value = items
+  try {
+    let res = await proxy.$api.getUserList(params)
+    const { items, count } = res.data
+    total.value = count
+    userList.value = items
+    return true
+  } catch (error) {
+    return false
+  }
 }
 // 查询用户时的表单
 const userFormRef = ref(null)
 // 查询按钮
-const handleQuery = () => {
-  getUserList()
-  proxy.$message.success('查询成功')
+const handleQuery = async () => {
+  let res = await getUserList()
+  if (res) {
+    proxy.$message.success('查询成功')
+  }
 }
 // 重置按钮
 const handleResetForm = (formRef) => {
