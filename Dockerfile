@@ -20,10 +20,11 @@ ENV DJANGO_SETTINGS_MODULE=ninja_demo.settings.prod
 # 暴露端口
 EXPOSE 8000
 # 设置权限
-COPY entrypoint.sh /app/entrypoint.sh
-RUN chmod +x /app/entrypoint.sh
-ENTRYPOINT ["/app/entrypoint.sh"]
+#COPY entrypoint.sh /app/entrypoint.sh
+#RUN chmod +x /app/entrypoint.sh
+#ENTRYPOINT ["/app/entrypoint.sh"]
 
 # 启动 Django 应用
 # CMD ["gunicorn", "ninja_demo.wsgi:application", "--bind", "0.0.0.0:8000", "--workers", "5"]
 # CMD ["uvicorn", "ninja_demo.asgi:application", "--host", "0.0.0.0", "--port", "8000", "--reload", "--workers", "5"]
+CMD ["sh", "-c", "python manage.py migrate && uvicorn ninja_demo.asgi:application --host 0.0.0.0 --port 8000 --reload --workers 5"]
