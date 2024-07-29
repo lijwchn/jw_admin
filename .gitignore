@@ -1,6 +1,7 @@
 .idea
 __pycache__
 logs
+.env
 
 # Logs
 logs
