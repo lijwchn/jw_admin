@@ -1,5 +1,6 @@
 # 生产环境配置
 from .base import *
+import os
 
 DEBUG = True
 ALLOWED_HOSTS = [
@@ -14,11 +15,11 @@ CORS_ORIGIN_ALLOW_ALL = True
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "ninja_demo",  # 你的数据库名
-        "USER": "root",  # 你的数据库用户名
-        "PASSWORD": "423432dfsafafdse%%",  # 你的数据库密码
-        "HOST": "gz-cdb-iic7vtdv.sql.tencentcdb.com",  # 数据库服务器地址，如果是本地则为localhost
-        "PORT": "23905",  # MySQL默认端口
+        "NAME": os.getenv("DB_NAME"),  # 你的数据库名
+        "USER": os.getenv("DB_USER", "root"),  # 你的数据库用户名
+        "PASSWORD": os.getenv("DB_PASSWORD"),  # 你的数据库密码
+        "HOST": os.getenv("DB_HOST"),  # 数据库服务器地址，如果是本地则为localhost
+        "PORT": os.getenv("DB_PORT"),  # MySQL默认端口
         "POOL_OPTIONS": {
             "POOL_SIZE": 10,
             "MAX_OVERFLOW": 10,
