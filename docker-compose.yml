@@ -1,16 +1,16 @@
 version: '3.8'
 
 services:
-  db:
-    image: mysql:8.4.2
-    container_name: mysql
-    environment:
-      MYSQL_DATABASE: ninja_demo
-      MYSQL_ROOT_PASSWORD: 123456
-    ports:
-      - "3306:3306"
-    volumes:
-      - db_data:/var/lib/mysql
+  #  db:
+  #    image: mysql:8.4.2
+  #    container_name: mysql
+  #    environment:
+  #      MYSQL_DATABASE: ninja_demo
+  #      MYSQL_ROOT_PASSWORD: 123456
+  #    ports:
+  #      - "3306:3306"
+  #    volumes:
+  #      - db_data:/var/lib/mysql
 
   backend:
     build:
@@ -19,8 +19,8 @@ services:
     container_name: backend
     ports:
       - "8000:8000"
-    depends_on:
-      - db
+  #    depends_on:
+  #      - db
 
   frontend:
     build:
@@ -32,8 +32,8 @@ services:
     depends_on:
       - backend
 
-volumes:
-  db_data:
+#volumes:
+#  db_data:
 
 # 设置默认网络
 networks:
