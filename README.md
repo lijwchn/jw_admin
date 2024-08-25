@@ -24,7 +24,7 @@ node 版本 18
 
 ## 生产环境部署（docker环境）：
 
-1. 后端：修改配置文件，在 ninja_demo.settings 文件夹下的 prod.py 中修改配置
+1. 后端：修改配置文件，在根目录下添加.env文件，格式参照.env_examole，写上你的数据库信息，上传到服务器
 2. 前端：切换到 web/src/config/index.js ，修改生产环境的后端地址
 3. 前端：切换到 web 目录下，按照你的实际情况，修改 nginx.conf 文件
 4. 开始部署，docker-compose up --build
