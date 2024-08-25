@@ -279,7 +279,7 @@ export default {
     }
     .wrapper {
       background: #eef0f3;
-      padding: 15px;
+      padding: 10px;
       height: calc(100vh - 50px);
     }
   }
