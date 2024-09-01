@@ -18,11 +18,11 @@ services:
       dockerfile: Dockerfile
     container_name: backend
     ports:
-      - "8000:8000"
-  #    depends_on:
-  #      - db
+      - '8000:8000'
+    #    depends_on:
+    #      - db
     env_file:
-      - .env  # 引用 .env 文件
+      - .env # 引用 .env 文件
 
   frontend:
     build:
@@ -30,7 +30,7 @@ services:
       dockerfile: Dockerfile
     container_name: frontend
     ports:
-      - "80:80"
+      - '80:80'
     depends_on:
       - backend
 
