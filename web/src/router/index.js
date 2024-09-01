@@ -70,7 +70,7 @@ const routes = [
         name: 'pic_ocr',
         path: '/tools/pic_ocr',
         meta: {
-          title: 'ocr图片识别',
+          title: 'ocr文字识别',
         },
         component: () => import('@/views/OcrTool.vue'),
       },

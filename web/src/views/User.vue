@@ -424,7 +424,7 @@ const editUser = async (row) => {
   }
 }
 // 表格高度
-const { tableHeight } = useTableHeightAdaptation(270)
+const { tableHeight } = useTableHeightAdaptation(260)
 </script>
 
 <style lang="scss"></style>
